@@ -14,7 +14,7 @@ const routes = [
     component: () => lazyLoad("LoginView")
   },
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: () => lazyLoad("HomeView")
   },
@@ -22,6 +22,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => lazyLoad("AboutView")
+  },
+  {
+    path: '/clients',
+    name: 'clients',
+    component: () => lazyLoad("ClientsView")
   }
 ]
 

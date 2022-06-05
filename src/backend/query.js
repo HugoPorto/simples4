@@ -1,6 +1,5 @@
 const knex = require("./knexfile")
 
-
 function getAllUsers(){
     return knex("usuarios").select("*")
 }
