@@ -1,16 +1,19 @@
 <template>
     <v-app>
         <div style="
-            background: #E8E7F2;
-            background: -webkit-linear-gradient(to right, #E8E7F2, #FFF, #E8E7F2);
-            background: linear-gradient(to right, #E8E7F2, #FFF, #E8E7F2);
-            ">
+            background: #FFF;
+            "
+            >
             <v-breadcrumbs
             :items="items"
             divider="-"
             ></v-breadcrumbs>
         </div>
-        <v-main style="border-top: 1px solid #d7d7d7; padding-top: 5px">
+        <v-main style="border-top: 1px solid #d7d7d7; padding-top: 5px;
+            background: #E8E7F2;
+            background: -webkit-linear-gradient(to right, #E8E7F2, #FFF, #E8E7F2);
+            background: linear-gradient(to right, #E8E7F2, #FFF, #E8E7F2);
+            ">
             <bar-component/>
             <clients-component />
         </v-main>

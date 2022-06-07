@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <v-form v-model="valid">
+    <v-form 
+      ref="form"
+      v-model="valid"
+      lazy-validation
+      >
       <v-card>
         <v-list-item three-line>
           <v-list-item-content>
@@ -29,14 +33,18 @@
                     v-if="!pessoaFisica"
                     v-model="client.cpf"
                     :counter="11"
-                    label="CPF"
+                    :rules="client.cpfRules"
+                    label="CPF(Somente Números)"
+                    ref="cpf"
                     required
                   ></v-text-field>
                   <v-text-field
                     v-if="pessoaFisica"
                     v-model="client.cnpj"
-                    :counter="11"
-                    label="CNPJ"
+                    :counter="14"
+                    :rules="client.cnpjRules"
+                    ref="cnpj"
+                    label="CNPJ(Somente Números)"
                     required
                   ></v-text-field>
                 </v-col>
@@ -274,7 +282,7 @@
             </v-container>
         </v-responsive>
       </v-card>
-      <v-btn id="add-button" depressed color="primary">Primary</v-btn>
+      <v-btn id="add-button" depressed color="primary" @click="addClient">Adicionar</v-btn>
     </v-form>
   </v-container>
 </template>
@@ -282,13 +290,23 @@
 <script>
   export default {
     name: 'ClientsComponent',
-
+    mounted() {
+      this.focusCPFField()
+    },
     data: () => ({
       valid: false,
       tipoCliente: false,
       client :{
         cpf: '',
+        cpfRules: [
+          v => !!v || 'O CPF é requerido',
+          v => (v && v.length == 11) || 'O CPF deve ter pelo menos 11 caracteres',
+        ],
         cnpj: '',
+        cnpjRules: [
+          v => !!v || 'O CNPJ é requerido',
+          v => (v && v.length == 14) || 'O CNPJ deve ter pelo menos 11 caracteres',
+        ],
         razaoSocial: '',
         nomeFantasia: '',
         rg: '',
@@ -317,10 +335,27 @@
       }
     }),
     computed: {
-      pessoaFisica () {
+      pessoaFisica () {    
         return this.tipoCliente ? this.tipoCliente : false
       },
     },
+    methods: {
+      addClient () {
+        this.client
+      },
+       validate () {
+        this.$refs.form.validate()
+      },
+      reset () {
+        this.$refs.form.reset()
+      },
+      resetValidation () {
+        this.$refs.form.resetValidation()
+      },
+      focusCPFField() {
+        this.$refs.cpf.focus();
+      },
+    }
   }
 </script>
 <style>

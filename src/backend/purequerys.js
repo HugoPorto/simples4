@@ -15,7 +15,6 @@ function getAllUsers(res){
 }
 
 function login(req, res){
-    console.log(req)
     queryString = `SELECT * FROM usuarios WHERE usuario = "${req.body.userName}" AND senha = "${req.body.password}";`;
 
     connection.query(queryString, (err, result) => {
