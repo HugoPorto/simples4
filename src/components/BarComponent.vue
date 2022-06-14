@@ -41,7 +41,7 @@
         <span class="mr-2">Cadastros</span>
       </v-btn>
       <v-btn text @click="logout">
-        <span class="mr-2">Notas</span>
+        <span class="mr-2">Notas </span>
       </v-btn>
       <v-btn text @click="logout">
         <span class="mr-2">Relatórios</span>
