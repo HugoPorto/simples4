@@ -2,9 +2,9 @@ const express = require("express")
 
 const app = express()
 
-// const query = require("./backend/query")
+const query = require("./backend/query")
 
-// const UsersController = require('./backend/controllers/UsersController')
+const UsersController = require('./backend/controllers/UsersController')
 
 const config = require("./config/config")
 
@@ -27,6 +27,7 @@ app.get("/usuarios", async (req, res)=>{
     console.log(req)
     await pureQuerys.getAllUsers(res)
 })
+
 app.post("/login", async (req, res)=>{
     await pureQuerys.login(req, res)
 })
